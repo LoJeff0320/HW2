@@ -19,7 +19,7 @@ void getValues(vector<string> &tokens, int &numOfOp, vector<char> &operations, v
 int main() {
   string expression;
   int numOfOp = 0;
-  float num1, num2, exTotal;
+  float num1, num2, exTotal = 0;
   
   cout << "Enter an expression, in the form a + b * c: ";
   getline(cin, expression);
@@ -39,32 +39,34 @@ int main() {
   getValues(tokens, numOfOp, operations, numCount);
 
   for(int a = 0; a < operations.size(); a++){
-    
-  }
-  
-  if(operations.at(0) == '*'){
-    exTotal = numCount.at(0) * numCount.at(1);
-    if(operations.at(0) == '/'){
-      exTotal = numCount.at(0) / numCount.at(1);
+    if(operations.at(a) == '*' || operations.at(a) == '/'){
+      if(operations.at(0) == '*'){
+        exTotal = numCount.at(0) * numCount.at(1);
+      }else{
+        exTotal = numCount.at(0) / numCount.at(1);
+      }
+    }
+    if(operations.at(a) == '+' || operations.at(a) == '-'){
+      if(operations.at(0) == '+'){
+        exTotal = numCount.at(0) + numCount.at(1);
+      }else{
+        exTotal = numCount.at(0) - numCount.at(1);
+      }
     }
   }
 
+  cout << expression << " = " << exTotal << endl;
+  
   cout << "num of operations: " << numOfOp << endl;
 
+  //print operations vector
   for(char x : operations){
     cout << x << endl;
   }
-
+  //print numCount vector
   for(float y : numCount){
     cout << y << endl;
   }
-  /*
-  if(tokens.at(1).compare("*")){
-    num1 = stof(tokens.at(0));
-    num2 = stof(tokens.at(2));
-    sum = num1 * num2;
-  }*/
-  
 }
 
 void printVector(){
