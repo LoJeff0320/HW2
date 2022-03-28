@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "atomic": "cpp",
+        "*.tcc": "cpp",
+        "string": "cpp",
+        "optional": "cpp",
+        "string_view": "cpp",
+        "functional": "cpp",
+        "random": "cpp",
+        "fstream": "cpp",
+        "istream": "cpp",
+        "numeric": "cpp",
+        "ostream": "cpp",
+        "streambuf": "cpp",
+        "tuple": "cpp"
+    }
+}

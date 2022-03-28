@@ -15,7 +15,7 @@ class Calulator{
   float num1, num2, exTotal = 0;
 
   vector<string> tokens;
-  vector<char> operations;
+  vector<char> op;
   vector<Operator> op;
   vector<float> numCount;
 
@@ -37,7 +37,7 @@ class Calulator{
     for(int i = 0; i < tokens.size(); i++){
       if(tokens.at(i).compare("*") == 0|| tokens.at(i).compare("/") == 0 || tokens.at(i).compare("+") == 0 || tokens.at(i).compare("-") == 0){
         numOfOp++;
-        operations.push_back(tokens.at(i)[0]);
+        op.push_back(tokens.at(i)[0]);
       }else{
         numCount.push_back(stof(tokens.at(i)));
       }
@@ -46,21 +46,21 @@ class Calulator{
 
   public:
   void precedence(){
-    for(int a = 0; a < operations.size(); a++){
+    for(int a = 0; a < op.size(); a++){
       for(int b = 0; b < numCount.size(); b++){
-        if(operations.at(a) == '*' || operations.at(a) == '/'){ // if the expression has multiplication or division
-          if(operations.at(0) == '*'){
+        if(op.at(a) == '*' || op.at(a) == '/'){ // if the expression has multiplication or division
+          if(op.at(0) == '*'){
             exTotal = numCount.at(0) * numCount.at(1);
           }else{
             exTotal = numCount.at(0) / numCount.at(1);
           }
-          if(operations.at(1) == '+'){
+          if(op.at(1) == '+'){
             exTotal += numCount.at(2);
           }else{
             exTotal -= numCount.at(2);
           } 
         }else{
-          if(operations.at(0) == '+'){
+          if(op.at(0) == '+'){
             exTotal = numCount.at(0) + numCount.at(1);
           }else{
             exTotal = numCount.at(0) - numCount.at(1);
@@ -73,7 +73,7 @@ class Calulator{
   public:
   void printOperations(){
     //print operations vector
-    for(char x : operations){
+    for(char x : op){
       cout << x << endl;
     }
   }
@@ -86,36 +86,13 @@ class Calulator{
   }
 };
 
-
-
 int main() {
   
   Calulator calculate;
   calculate.getExpression();
+  calculate.printOperations();
+  calculate.printOperations();
   calculate.getValues();
 
-  //cout << expression << endl;
-  
-
-  
-
-  
-
-  
-
-  //cout << expression << " = " << exTotal << endl;
-  
-  //cout << "num of operations: " << numOfOp << endl;
-
-  
-  //print numCount vector
-  
-}
-
-void printVector(){
-  /*
-  for(auto& x : tokens){
-    cout << x << endl;
-  }*/
 }
 
