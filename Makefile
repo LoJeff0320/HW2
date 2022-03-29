@@ -1,11 +1,5 @@
-CXX = clang++
-override CXXFLAGS += -g -Wno-everything
+lab2: main.o 
+	g++ main.o -o lab2
 
-SRCS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.cpp' -print)
-OBJS = $(patsubst %.cpp, %.o, $(SRCS))
-
-main: $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o main
-
-clean:
-	rm -f $(OBJS) main
+main.o: main.cpp
+	g++ -c main.cpp

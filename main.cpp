@@ -5,7 +5,7 @@ using namespace std;
 
 class Calulator{
 
-  enum Operator : unsigned char
+  enum Operator
   {
     multiplication = '*', division = '/', addition = '+', subtraction = '-'
   };
@@ -16,7 +16,7 @@ class Calulator{
 
   vector<string> tokens;
   vector<char> op;
-  vector<Operator> op;
+  //vector<Operator> op;
   vector<float> numCount;
 
   public:
@@ -31,8 +31,6 @@ class Calulator{
       tokens.push_back(word);
     }
   }
-
-  public:
   void getValues(){
     for(int i = 0; i < tokens.size(); i++){
       if(tokens.at(i).compare("*") == 0|| tokens.at(i).compare("/") == 0 || tokens.at(i).compare("+") == 0 || tokens.at(i).compare("-") == 0){
@@ -43,8 +41,6 @@ class Calulator{
       }
     }
   }
-
-  public:
   void precedence(){
     for(int a = 0; a < op.size(); a++){
       for(int b = 0; b < numCount.size(); b++){
@@ -69,16 +65,12 @@ class Calulator{
       }
     }
   }
-
-  public:
   void printOperations(){
     //print operations vector
     for(char x : op){
       cout << x << endl;
     }
   }
-
-  public:
   void printNumCount(){
     for(float y : numCount){
       cout << y << endl;
